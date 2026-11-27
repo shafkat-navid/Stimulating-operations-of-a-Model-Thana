@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.modelthana.Navid.User4Controller" styleClass="page">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.modelthana.navid.controller.TrafficSergeantController" styleClass="page">
  <top>
   <VBox spacing="5" styleClass="heading">
    <HBox alignment="CENTER_LEFT" spacing="12">
@@ -28,12 +29,17 @@
      <columnConstraints><ColumnConstraints minWidth="160"/><ColumnConstraints minWidth="300" hgrow="ALWAYS"/></columnConstraints>
     </GridPane>
     <HBox spacing="8" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="4">
-     <Button text="Submit / Perform" onAction="#submit" styleClass="primary-button"/>
+     <Button fx:id="submitButton" text="Submit" onAction="#submit" styleClass="primary-button"/>
+     <Button fx:id="viewTicketButton" text="View Ticket" onAction="#viewTicket"/>
      <Button text="Filter History" onAction="#filterRecords"/>
      <Button text="Show Latest" onAction="#showLatest"/>
      <Button text="Clear" onAction="#clearForm"/>
     </HBox>
    </GridPane>
+   <BarChart fx:id="reportChart" visible="false" managed="false" prefHeight="180">
+    <xAxis><CategoryAxis label="Payment status"/></xAxis>
+    <yAxis><NumberAxis label="Tickets"/></yAxis>
+   </BarChart>
    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="filter-line">
     <Label text="History / notifications:"/>
     <Label fx:id="messageLabel" text="Select a workflow to begin." wrapText="true"/>

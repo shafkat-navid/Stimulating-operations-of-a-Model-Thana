@@ -1,4 +1,4 @@
-package com.example.modelthana.Navid;
+package com.example.modelthana.navid;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

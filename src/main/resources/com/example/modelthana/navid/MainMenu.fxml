@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox alignment="CENTER" spacing="22" xmlns:fx="http://javafx.com/fxml/1"
- fx:controller="com.example.modelthana.Navid.MainMenuController" styleClass="main-menu">
+ fx:controller="com.example.modelthana.navid.controller.MainMenuController" styleClass="main-menu">
  <Label text="MODEL THANA" styleClass="page-title"/>
  <Label text="Select your dashboard"/>
  <Button text="User 3 - Patrol Constable" onAction="#openUser3" prefWidth="280"/>
