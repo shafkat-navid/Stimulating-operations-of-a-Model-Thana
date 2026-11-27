@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.modelthana.Navid.User4Controller" styleClass="page">
+ <top>
+  <VBox spacing="5" styleClass="heading">
+   <Label text="USER 4 - TRAFFIC SERGEANT" styleClass="page-title"/>
+   <Label text="Enter the record information, then click Add New Record to display it in the table."/>
+  </VBox>
+ </top>
+ <center>
+  <VBox spacing="12">
+   <GridPane hgap="14" vgap="10" styleClass="form-area">
+    <columnConstraints>
+     <ColumnConstraints minWidth="115"/>
+     <ColumnConstraints minWidth="190" hgrow="ALWAYS"/>
+     <ColumnConstraints minWidth="115"/>
+     <ColumnConstraints minWidth="210" hgrow="ALWAYS"/>
+    </columnConstraints>
+    <Label text="Record ID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="idField" promptText="Auto generated" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <Label text="Operation" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+    <ComboBox fx:id="operationBox" promptText="Select operation" maxWidth="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+    <Label text="Name / Subject" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="subjectField" promptText="Enter name or subject" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Label text="Location" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+    <TextField fx:id="locationField" promptText="Enter location" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+    <Label text="Date" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <DatePicker fx:id="datePicker" promptText="Select date" maxWidth="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <Label text="Status" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+    <ComboBox fx:id="statusBox" promptText="Select status" maxWidth="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+    <Label text="Details" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextArea fx:id="detailsArea" promptText="Enter operation details..." prefRowCount="3" wrapText="true"
+              GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+    <CheckBox fx:id="urgentCheck" text="Urgent / Priority" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <HBox spacing="10" GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.columnSpan="3">
+     <Button text="Add New Record" onAction="#addRecord" styleClass="primary-button"/>
+     <Button text="Filter and Load" onAction="#filterRecords"/>
+     <Button text="Show Most Recent Record" onAction="#showLatest"/>
+     <Button text="Clear" onAction="#clearForm"/>
+    </HBox>
+   </GridPane>
+   <HBox spacing="12" alignment="CENTER_LEFT" styleClass="filter-line">
+    <Label text="Table status:"/>
+    <Label fx:id="messageLabel" text="No records added yet."/>
+   </HBox>
+   <TableView fx:id="recordTable" VBox.vgrow="ALWAYS">
+    <columns>
+     <TableColumn fx:id="idColumn" text="Record ID" prefWidth="145"/>
+     <TableColumn fx:id="operationColumn" text="Operation" prefWidth="175"/>
+     <TableColumn fx:id="subjectColumn" text="Name / Subject" prefWidth="175"/>
+     <TableColumn fx:id="locationColumn" text="Location" prefWidth="175"/>
+     <TableColumn fx:id="dateColumn" text="Date" prefWidth="130"/>
+     <TableColumn fx:id="statusColumn" text="Status" prefWidth="130"/>
+    </columns>
+    <placeholder><Label text="No content in table"/></placeholder>
+   </TableView>
+  </VBox>
+ </center>
+</BorderPane>
