@@ -25,7 +25,7 @@ public class TrafficSergeantController {
     @FXML private TextField idField;
     @FXML private ComboBox<String> operationBox;
     @FXML private GridPane formFields;
-    @FXML private Label messageLabel, formHint;
+    @FXML private Label formHint;
     @FXML private Button submitButton, viewTicketButton;
     @FXML private BarChart<String, Number> reportChart;
     @FXML private TableView<RecordRow> recordTable;
@@ -78,7 +78,6 @@ public class TrafficSergeantController {
         viewTicketButton.setManaged(false);
         updateId();
         formHint.setText("Vehicle registry: DHK-1234, CTG-5678, KHL-9012. Select a traffic workflow.");
-        messageLabel.setText("Loaded " + allRecords.size() + " saved record(s).");
     }
 
     private void buildForm() {
@@ -201,9 +200,9 @@ public class TrafficSergeantController {
             recordTable.setItems(allRecords);
             updateId();
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         } catch (IOException ex) {
-            notify("Could not save this traffic record: " + ex.getMessage());
+            showError("Could not save this traffic record: " + ex.getMessage());
         }
     }
 
@@ -213,7 +212,7 @@ public class TrafficSergeantController {
             recordTable.setItems(FXCollections.observableArrayList(lookup.rows()));
             notify(lookup.message());
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         }
     }
 
@@ -234,7 +233,7 @@ public class TrafficSergeantController {
             viewTicketButton.setDisable(true);
             notify("Ticket details loaded. Enter the amount received and payment method.");
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         }
     }
 
@@ -376,6 +375,10 @@ public class TrafficSergeantController {
     }
 
     private void notify(String message) {
-        messageLabel.setText(message);
+        new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK).showAndWait();
+    }
+
+    private void showError(String message) {
+        new Alert(Alert.AlertType.ERROR, message, ButtonType.OK).showAndWait();
     }
 }

@@ -40,10 +40,6 @@
     <xAxis><CategoryAxis label="Payment status"/></xAxis>
     <yAxis><NumberAxis label="Tickets"/></yAxis>
    </BarChart>
-   <HBox spacing="10" alignment="CENTER_LEFT" styleClass="filter-line">
-    <Label text="History / notifications:"/>
-    <Label fx:id="messageLabel" text="Select a workflow to begin." wrapText="true"/>
-   </HBox>
    <TableView fx:id="recordTable" VBox.vgrow="ALWAYS">
     <columns>
      <TableColumn fx:id="idColumn" text="ID" prefWidth="70"/>
