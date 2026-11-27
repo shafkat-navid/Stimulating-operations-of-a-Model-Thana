@@ -23,7 +23,7 @@ public class PatrolConstableController {
     @FXML private TextField idField;
     @FXML private ComboBox<String> operationBox;
     @FXML private GridPane formFields;
-    @FXML private Label messageLabel, formHint, routeDetailsLabel;
+    @FXML private Label formHint, routeDetailsLabel;
     @FXML private Button submitButton, acknowledgeButton, viewDispatchButton, acceptDispatchButton;
     @FXML private TableView<RecordRow> recordTable;
     @FXML private TableColumn<RecordRow, String> idColumn, operationColumn, subjectColumn,
@@ -73,7 +73,6 @@ public class PatrolConstableController {
         });
         updateId();
         formHint.setText("Assigned day shift roster and pending dispatch alerts are loaded.");
-        messageLabel.setText("Loaded " + allRecords.size() + " saved record(s).");
         updateActionButtons("");
     }
 
@@ -225,9 +224,9 @@ public class PatrolConstableController {
             updateId();
             notify(confirmation);
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         } catch (IOException ex) {
-            notify("Could not save this patrol record: " + ex.getMessage());
+            showError("Could not save this patrol record: " + ex.getMessage());
         }
     }
 
@@ -244,9 +243,9 @@ public class PatrolConstableController {
             refreshDutyRows(date);
             updateId();
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         } catch (IOException ex) {
-            notify("Could not save the duty acknowledgement: " + ex.getMessage());
+            showError("Could not save the duty acknowledgement: " + ex.getMessage());
         }
     }
 
@@ -256,7 +255,7 @@ public class PatrolConstableController {
             String dispatchId = textValue("dispatchId");
             notify(model.viewDispatch(dispatchId));
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         }
     }
 
@@ -268,9 +267,9 @@ public class PatrolConstableController {
             updateId();
             formHint.setText("Pending dispatches: " + String.join(", ", model.getPendingDispatchIds()));
         } catch (IllegalArgumentException ex) {
-            notify(ex.getMessage());
+            showError(ex.getMessage());
         } catch (IOException ex) {
-            notify("Could not save the dispatch response: " + ex.getMessage());
+            showError("Could not save the dispatch response: " + ex.getMessage());
         }
     }
 
@@ -393,6 +392,10 @@ public class PatrolConstableController {
     }
 
     private void notify(String message) {
-        messageLabel.setText(message);
+        new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK).showAndWait();
+    }
+
+    private void showError(String message) {
+        new Alert(Alert.AlertType.ERROR, message, ButtonType.OK).showAndWait();
     }
 }
