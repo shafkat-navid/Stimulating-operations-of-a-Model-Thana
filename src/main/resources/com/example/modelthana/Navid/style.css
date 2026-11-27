@@ -1,0 +1,11 @@
+.root { -fx-font-family: Arial; -fx-font-size: 13px; -fx-background-color: #f4f4f4; }
+.page { -fx-padding: 12; }
+.heading { -fx-padding: 12 18 14 18; -fx-background-color: #e9edf2; }
+.page-title { -fx-font-size: 20px; -fx-font-weight: bold; }
+.form-area { -fx-padding: 18 22 10 22; }
+.filter-line { -fx-padding: 4 22 4 22; }
+.table-view { -fx-background-color: white; }
+.table-view .column-header { -fx-size: 30px; }
+.primary-button { -fx-font-weight: bold; }
+.main-menu { -fx-padding: 40; -fx-background-color: #f4f4f4; }
+.button { -fx-padding: 7 14 7 14; }
