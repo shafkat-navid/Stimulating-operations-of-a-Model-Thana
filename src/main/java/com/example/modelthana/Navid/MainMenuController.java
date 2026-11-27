@@ -15,7 +15,6 @@ public class MainMenuController {
  private void openPage(ActionEvent event,String file,String title) throws Exception {
   FXMLLoader loader=new FXMLLoader(getClass().getResource(file));
   Scene scene=new Scene(loader.load(),1050,720);
-  scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
   Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
   stage.setTitle(title); stage.setScene(scene);
  }
