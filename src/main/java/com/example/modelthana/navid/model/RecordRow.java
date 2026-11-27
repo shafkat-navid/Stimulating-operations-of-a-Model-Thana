@@ -1,4 +1,4 @@
-package com.example.modelthana.Navid;
+package com.example.modelthana.navid.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 public class RecordRow {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.modelthana.Navid.User3Controller" styleClass="page">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.modelthana.navid.controller.PatrolConstableController" styleClass="page">
  <top>
   <VBox spacing="5" styleClass="heading">
    <HBox alignment="CENTER_LEFT" spacing="12">
@@ -19,7 +19,7 @@
    <GridPane hgap="12" vgap="8" styleClass="form-area">
     <columnConstraints><ColumnConstraints minWidth="125"/><ColumnConstraints minWidth="220" hgrow="ALWAYS"/>
      <ColumnConstraints minWidth="130"/><ColumnConstraints minWidth="260" hgrow="ALWAYS"/></columnConstraints>
-    <Label text="Next record ID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <Label text="Record / Log ID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     <TextField fx:id="idField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
     <Label text="Workflow" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
     <ComboBox fx:id="operationBox" promptText="Choose a patrol workflow" maxWidth="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
@@ -28,12 +28,16 @@
      <columnConstraints><ColumnConstraints minWidth="160"/><ColumnConstraints minWidth="300" hgrow="ALWAYS"/></columnConstraints>
     </GridPane>
     <HBox spacing="8" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="4">
-     <Button text="Submit / Perform" onAction="#submit" styleClass="primary-button"/>
+     <Button fx:id="submitButton" text="Submit" onAction="#submit" styleClass="primary-button"/>
+     <Button fx:id="acknowledgeButton" text="Acknowledge Duty" onAction="#acknowledgeDuty"/>
+     <Button fx:id="viewDispatchButton" text="View Dispatch" onAction="#viewDispatch"/>
+     <Button fx:id="acceptDispatchButton" text="Accept" onAction="#acceptDispatch"/>
      <Button text="Filter History" onAction="#filterRecords"/>
      <Button text="Show Latest" onAction="#showLatest"/>
      <Button text="Clear" onAction="#clearForm"/>
     </HBox>
    </GridPane>
+   <Label fx:id="routeDetailsLabel" text="" wrapText="true" styleClass="filter-line"/>
    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="filter-line">
     <Label text="History / notifications:"/>
     <Label fx:id="messageLabel" text="Select a workflow to begin." wrapText="true"/>
